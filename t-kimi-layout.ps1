@@ -5,7 +5,7 @@ function t {
 
     .DESCRIPTION
         Typing 't' in PowerShell opens a new Windows Terminal tab split into
-        four panes:
+        four equal panes:
         - Top row: two Kimi sessions with thinking enabled.
         - Bottom row: two Kimi sessions with thinking disabled.
 
@@ -23,12 +23,14 @@ function t {
 
     $dir = $PWD.Path
 
+    # Build the left column first, then add the right column for a clean 2x2 grid.
     $wtArgs = @(
         'new-tab', '-d', $dir, 'cmd', '/k', $kimi, '--thinking'
-        ';', 'split-pane', '-V', 'cmd', '/k', $kimi, '--thinking'
-        ';', 'split-pane', '-H', 'cmd', '/k', $kimi, '--no-thinking'
-        ';', 'move-focus', 'left'
-        ';', 'split-pane', '-H', 'cmd', '/k', $kimi, '--no-thinking'
+        ';', 'split-pane', '-H', '--size', '0.5', 'cmd', '/k', $kimi, '--no-thinking'
+        ';', 'move-focus', 'up'
+        ';', 'split-pane', '-V', '--size', '0.5', 'cmd', '/k', $kimi, '--thinking'
+        ';', 'move-focus', 'down'
+        ';', 'split-pane', '-V', '--size', '0.5', 'cmd', '/k', $kimi, '--no-thinking'
     )
 
     Start-Process wt -ArgumentList $wtArgs -NoNewWindow
