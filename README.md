@@ -16,6 +16,8 @@ A tiny PowerShell function that opens Windows Terminal with a 2x2 grid of [Kimi 
 
 ## Installation
 
+### PowerShell
+
 1. Copy the `t` function from `t-kimi-layout.ps1` into your PowerShell profile (`$PROFILE`).
 2. Reload your profile:
    ```powershell
@@ -23,11 +25,16 @@ A tiny PowerShell function that opens Windows Terminal with a 2x2 grid of [Kimi 
    ```
 3. Type `t` and press Enter.
 
+### Command Prompt (cmd.exe)
+
+1. Copy `t.cmd` to a directory on your PATH (e.g. `C:\Users\%USERNAME%\.local\bin`).
+2. Type `t` and press Enter.
+
 ## Requirements
 
 - Windows Terminal
 - Kimi CLI installed and available on your PATH
-- PowerShell
+- PowerShell or Command Prompt
 
 ## How it works
 
