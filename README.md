@@ -35,7 +35,3 @@ A tiny setup that opens Windows Terminal with a 2x2 grid of [Kimi CLI](https://g
 - Windows Terminal
 - Kimi CLI installed and available on your PATH
 - PowerShell or Command Prompt
-
-## Optional: Windows Terminal custom action
-
-If you prefer a key binding, add `settings-snippet.json` to the `actions` array in your Windows Terminal `settings.json` and bind it to any key you like.
