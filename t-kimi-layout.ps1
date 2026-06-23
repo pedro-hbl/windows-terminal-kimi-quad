@@ -15,23 +15,6 @@ function t {
         available in every session.
     #>
 
-    # Resolve the kimi executable; update this line if kimi is not on your PATH.
-    $kimi = (Get-Command kimi -ErrorAction SilentlyContinue).Source
-    if (-not $kimi) {
-        $kimi = 'kimi'
-    }
-
-    $dir = $PWD.Path
-
-    # Build the left column first, then add the right column for a clean 2x2 grid.
-    $wtArgs = @(
-        'new-tab', '-d', $dir, 'cmd', '/k', $kimi, '--thinking'
-        ';', 'split-pane', '-H', '--size', '0.5', 'cmd', '/k', $kimi, '--no-thinking'
-        ';', 'move-focus', 'up'
-        ';', 'split-pane', '-V', '--size', '0.5', 'cmd', '/k', $kimi, '--thinking'
-        ';', 'move-focus', 'down'
-        ';', 'split-pane', '-V', '--size', '0.5', 'cmd', '/k', $kimi, '--no-thinking'
-    )
-
-    Start-Process wt -ArgumentList $wtArgs -NoNewWindow
+    # The layout is defined as a custom Windows Terminal action (User.KimiQuad).
+    Start-Process wt -ArgumentList 'action:User.KimiQuad' -NoNewWindow
 }
