@@ -15,6 +15,19 @@ function t {
         available in every session.
     #>
 
-    # The layout is defined as a custom Windows Terminal action (User.KimiQuad).
-    Start-Process wt -ArgumentList 'action:User.KimiQuad' -NoNewWindow
+    $kimi = (Get-Command kimi -ErrorAction SilentlyContinue).Source
+    if (-not $kimi) { $kimi = 'kimi' }
+
+    # Build the top row first, then split each top pane downward for a clean 2x2 grid.
+    $wtArgs = @(
+        'new-tab', '-d', $PWD.Path, 'cmd', '/k', $kimi, '--thinking'
+        ';', 'split-pane', '-V', '--size', '0.5', 'cmd', '/k', $kimi, '--thinking'
+        ';', 'move-focus', 'left'
+        ';', 'split-pane', '-H', '--size', '0.5', 'cmd', '/k', $kimi, '--no-thinking'
+        ';', 'move-focus', 'up'
+        ';', 'move-focus', 'right'
+        ';', 'split-pane', '-H', '--size', '0.5', 'cmd', '/k', $kimi, '--no-thinking'
+    )
+
+    Start-Process wt -ArgumentList $wtArgs -NoNewWindow
 }
