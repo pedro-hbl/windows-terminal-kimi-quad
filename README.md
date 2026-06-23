@@ -30,8 +30,17 @@ A tiny setup that opens Windows Terminal with a 2x2 grid of [Kimi CLI](https://g
 1. Copy `t.cmd` to a directory on your PATH (e.g. `C:\Users\%USERNAME%\.local\bin`).
 2. Type `t` and press Enter.
 
+### Git Bash
+
+1. Copy the `t` script to a directory on your PATH (e.g. `C:\Users\%USERNAME%\.local\bin`).
+2. Make it executable:
+   ```bash
+   chmod +x ~/.local/bin/t
+   ```
+3. Type `t` and press Enter.
+
 ## Requirements
 
 - Windows Terminal
 - Kimi CLI installed and available on your PATH
-- PowerShell or Command Prompt
+- PowerShell, Command Prompt, or Git Bash
